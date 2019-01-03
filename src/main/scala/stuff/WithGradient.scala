@@ -1,7 +1,3 @@
-/**
-  * Copyright Homeaway, Inc 2016-Present. All Rights Reserved.
-  * No unauthorized use of this software.
-  */
 package stuff
 
 import java.awt.Point
@@ -33,8 +29,7 @@ trait WithGradient {
 
   }
 
-  sealed abstract class GradientInterpolation(val value: Int)
-      extends IntEnumEntry
+  sealed abstract class GradientInterpolation(val value: Int) extends IntEnumEntry
 
   object GradientInterpolation extends IntEnum[GradientInterpolation] {
     val values: IndexedSeq[GradientInterpolation] = findValues
@@ -55,13 +50,6 @@ trait WithGradient {
                color2: Int = 0xffffffff,
                repeat: Boolean = false,
                `type`: GradientType = GradientType.Linear,
-               interpolation: GradientInterpolation =
-                 GradientInterpolation.Linear) =
-    new GradientFilter(p1,
-                       p2,
-                       color1,
-                       color2,
-                       repeat,
-                       `type`.value,
-                       interpolation.value)
+               interpolation: GradientInterpolation = GradientInterpolation.Linear) =
+    new GradientFilter(p1, p2, color1, color2, repeat, `type`.value, interpolation.value)
 }

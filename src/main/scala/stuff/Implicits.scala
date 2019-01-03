@@ -11,12 +11,9 @@ object Implicits {
     ImageIO.read(file.toJava)
 
   trait FilterOps {
-    def applyFilter(image: BufferedImage,
-                    filter: BufferedImageOp): BufferedImage = {
+    def applyFilter(image: BufferedImage, filter: BufferedImageOp): BufferedImage = {
       println(s"Applying filter $filter")
-      filter.filter(
-        image,
-        new BufferedImage(image.getWidth, image.getHeight(), image.getType))
+      filter.filter(image, new BufferedImage(image.getWidth, image.getHeight(), image.getType))
     }
   }
 

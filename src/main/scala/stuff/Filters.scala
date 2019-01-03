@@ -1,7 +1,3 @@
-/**
-  * Copyright Homeaway, Inc 2016-Present. All Rights Reserved.
-  * No unauthorized use of this software.
-  */
 package stuff
 
 import java.awt.image.{BufferedImage, BufferedImageOp}
@@ -273,8 +269,7 @@ object Filters extends WithGradient {
 
   def mapColors = new MapColorsFilter
 
-  def map(xf: (Float, Float) => Float,
-          yf: (Float, Float) => Float): MapFilter = {
+  def map(xf: (Float, Float) => Float, yf: (Float, Float) => Float): MapFilter = {
     val f = new MapFilter
     class F(f: (Float, Float) => Float) extends Function2D {
       override def evaluate(x: Float, y: Float): Float = f(x, y)
