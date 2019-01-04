@@ -13,7 +13,7 @@ import scala.Console.{GREEN, RESET}
 
 object Filter {
 
-  def applyFilter(image: BufferedImage, filter: BufferedImageOp): IO[BufferedImage] =
+  private def applyFilter(image: BufferedImage, filter: BufferedImageOp): IO[BufferedImage] =
     IO(println(s"${GREEN}Applying filter $filter$RESET")) *>
       IO(filter.filter(image, new BufferedImage(image.getWidth, image.getHeight(), image.getType)))
 
