@@ -6,6 +6,7 @@ import com.jhlabs.image._
 import enumeratum.values.{IntEnum, IntEnumEntry}
 
 import scala.collection.immutable.IndexedSeq
+import Filter._
 
 trait WithGradient {
 
@@ -50,6 +51,6 @@ trait WithGradient {
                color2: Int = 0xffffffff,
                repeat: Boolean = false,
                `type`: GradientType = GradientType.Linear,
-               interpolation: GradientInterpolation = GradientInterpolation.Linear) =
-    new GradientFilter(p1, p2, color1, color2, repeat, `type`.value, interpolation.value)
+               interpolation: GradientInterpolation = GradientInterpolation.Linear): Filter =
+    gilter(new GradientFilter(p1, p2, color1, color2, repeat, `type`.value, interpolation.value))
 }

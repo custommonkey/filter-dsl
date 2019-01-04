@@ -1,15 +1,18 @@
+import java.awt.image.BufferedImage
+
 import better.files._
-import stuff.Filters._
-import stuff.Implicits.{FileOps, ImageOps, fileToBufferedImage}
+import cats.effect.IO
+import stuff.Api._
 
 /**
   * http://www.jhlabs.com/ip/filters/
   */
 object Main2 /*extends App*/ {
 
-  val bohr = File("/Users/jeffmartin/Downloads/Niels_Bohr.jpg")
-  val in   = File("/Users/jeffmartin/Downloads/6060918265_1ee61fbd5a_m.jpg")
-
-  in ~> composite(in, bohr) ~> "composite.png"
+  val bohr: IO[BufferedImage] = read(File("/Users/jeffmartin/Downloads/Niels_Bohr.jpg"))
+  val in: IO[BufferedImage]   = read(File("/Users/jeffmartin/Downloads/6060918265_1ee61fbd5a_m.jpg"))
+//  val c: IO[Filter]           = (in, bohr).mapN(composite)
+//
+//  c >>= write(File("composite.png"))
 
 }
