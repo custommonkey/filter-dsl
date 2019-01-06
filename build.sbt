@@ -4,9 +4,12 @@ version := "1.0"
 
 scalaVersion := "2.12.8"
 
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+
 libraryDependencies ++= List(
   "com.beachape"               %% "enumeratum"                % "1.5.13",
   "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.8",
+  "com.github.mpilquist"       %% "simulacrum"                % "0.14.0",
   "com.github.pathikrit"       %% "better-files"              % "3.6.0",
   "com.jhlabs"                 % "filters"                    % "2.0.235-1",
   "com.lihaoyi"                %% "pprint"                    % "0.5.3",
@@ -14,6 +17,7 @@ libraryDependencies ++= List(
   "eu.timepit"                 %% "refined-scalacheck"        % "0.9.2",
   "io.chrisdavenport"          %% "cats-scalacheck"           % "0.1.0",
   "org.scalacheck"             %% "scalacheck"                % "1.13.5",
+  "org.scalatest"              %% "scalatest"                 % "3.0.5" % Test,
   "org.typelevel"              %% "cats-effect"               % "1.1.0"
 )
 

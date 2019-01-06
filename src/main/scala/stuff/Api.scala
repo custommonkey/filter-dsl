@@ -1,5 +1,6 @@
 package stuff
 
+import java.awt.Color
 import java.awt.image.BufferedImage
 import java.io.IOException
 
@@ -11,6 +12,8 @@ import cats.implicits._
 import javax.imageio.ImageIO
 
 object Api {
+
+  type Colour = Color
 
   case class ReadError(file: File, e: IOException)
       extends Throwable(s"Error loading $file, ${e.getMessage}")
@@ -36,5 +39,11 @@ object Api {
   }.as(Success)
 
   def print(a: Any): IO[Unit] = IO(pprint.pprintln(a))
+
+  trait Source extends (Unit => IO[BufferedImage])
+
+  final implicit class IntOps(val i: Int) extends AnyVal {
+    def goldenWidth: Int = (i * 1.61803398875).toInt
+  }
 
 }

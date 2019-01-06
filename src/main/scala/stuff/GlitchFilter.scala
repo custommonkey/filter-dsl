@@ -20,9 +20,7 @@ class GlitchFilter extends AbstractBufferedImageOp {
     val header = bytes.sliding(2).indexWhere(b => b.head == 255 && b.last == 218)
 
     0 to 5 foreach { _ =>
-      val pos: Int = Random.nextInt(bytes.length - header)
-
-      bytes(pos) = Random.nextInt().toByte
+      bytes(Random.nextInt(bytes.length - header)) = Random.nextInt().toByte
     }
 
     ImageIO.read(new ByteArrayInputStream(bytes))

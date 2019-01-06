@@ -1,10 +1,7 @@
-/**
-  * Copyright Homeaway, Inc 2016-Present. All Rights Reserved.
-  * No unauthorized use of this software.
-  */
 package stuff
 
-import java.awt.Color
+import java.awt.Font.{BOLD, ITALIC, PLAIN}
+import java.awt.{Color, Font, GraphicsEnvironment}
 
 import cats.effect.IO
 import eu.timepit.refined.api.Refined
@@ -32,6 +29,13 @@ trait Values extends ScalacheckShapeless {
       b <- Gen.choose(0, 255)
       a <- Gen.choose(0, 255)
     } yield new Color(r, g, b, a)
+  }
+  implicit val arbFont: Arbitrary[Font] = Arbitrary {
+    for {
+      name  <- Gen.oneOf(GraphicsEnvironment.getLocalGraphicsEnvironment.getAvailableFontFamilyNames)
+      style <- Gen.oneOf(PLAIN, BOLD, ITALIC)
+      size  <- Gen.choose(15, 100)
+    } yield new Font(name, style, size)
   }
 
 }
