@@ -17,9 +17,9 @@ class GlitchFilter extends AbstractBufferedImageOp {
 
     val bytes = buf.toByteArray
 
-    val header = bytes.sliding(2).indexWhere(b ⇒ b.head == 255 && b.last == 218)
+    val header = bytes.sliding(2).indexWhere(b => b.head == 255 && b.last == 218)
 
-    0 to 5 foreach { _ ⇒
+    0 to 5 foreach { _ =>
       val pos: Int = Random.nextInt(bytes.length - header)
 
       bytes(pos) = Random.nextInt().toByte
@@ -39,7 +39,7 @@ class GlitchFilter extends AbstractBufferedImageOp {
     }
   }
 
-  private def corrupt(s: String) = s.map { c ⇒
+  private def corrupt(s: String) = s.map { c =>
     if (Random.nextInt(10) == 0) {
       Random.nextPrintableChar()
     } else c

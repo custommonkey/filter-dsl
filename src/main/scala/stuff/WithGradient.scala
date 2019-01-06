@@ -4,9 +4,9 @@ import java.awt.Point
 
 import com.jhlabs.image._
 import enumeratum.values.{IntEnum, IntEnumEntry}
+import stuff.Filters.AbstractFilter
 
 import scala.collection.immutable.IndexedSeq
-import Filter._
 
 trait WithGradient {
 
@@ -45,12 +45,13 @@ trait WithGradient {
 
   }
 
-  def gradient(p1: Point = new Point(0, 0),
-               p2: Point = new Point(64, 64),
-               color1: Int = 0xff000000,
-               color2: Int = 0xffffffff,
-               repeat: Boolean = false,
-               `type`: GradientType = GradientType.Linear,
-               interpolation: GradientInterpolation = GradientInterpolation.Linear): Filter =
-    gilter(new GradientFilter(p1, p2, color1, color2, repeat, `type`.value, interpolation.value))
+  case class Gradient(p1: Point = new Point(0, 0),
+                      p2: Point = new Point(64, 64),
+                      color1: Int = 0xff000000,
+                      color2: Int = 0xffffffff,
+                      repeat: Boolean = false,
+                      `type`: GradientType = GradientType.Linear,
+                      interpolation: GradientInterpolation = GradientInterpolation.Linear)
+      extends AbstractFilter(
+        new GradientFilter(p1, p2, color1, color2, repeat, `type`.value, interpolation.value))
 }

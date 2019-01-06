@@ -5,11 +5,16 @@ version := "1.0"
 scalaVersion := "2.12.8"
 
 libraryDependencies ++= List(
-  "com.beachape"         %% "enumeratum"   % "1.5.13",
-  "com.github.pathikrit" %% "better-files" % "3.6.0",
-  "com.jhlabs"           % "filters"       % "2.0.235-1",
-  "eu.timepit"           %% "refined"      % "0.9.3",
-  "org.typelevel"        %% "cats-effect"  % "1.1.0"
+  "com.beachape"               %% "enumeratum"                % "1.5.13",
+  "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.8",
+  "com.github.pathikrit"       %% "better-files"              % "3.6.0",
+  "com.jhlabs"                 % "filters"                    % "2.0.235-1",
+  "com.lihaoyi"                %% "pprint"                    % "0.5.3",
+  "eu.timepit"                 %% "refined"                   % "0.9.3",
+  "eu.timepit"                 %% "refined-scalacheck"        % "0.9.2",
+  "io.chrisdavenport"          %% "cats-scalacheck"           % "0.1.0",
+  "org.scalacheck"             %% "scalacheck"                % "1.13.5",
+  "org.typelevel"              %% "cats-effect"               % "1.1.0"
 )
 
 scalacOptions ++= Seq(
