@@ -12,7 +12,6 @@ import eu.timepit.refined.auto._
 import eu.timepit.refined.numeric.Interval.Closed
 import eu.timepit.refined.numeric.Positive
 import stuff.Api.Filename
-import stuff.Filter._
 import stuff.Filters.Caustic.{Brightness, Samples}
 
 object Filters extends WithGradient {
@@ -111,7 +110,8 @@ object Filters extends WithGradient {
   sealed trait Filter extends (BufferedImage => IO[BufferedImage])
 
   abstract class AbstractFilter[T <: BufferedImageOp](val filter: T) extends Filter {
-    override def apply(i: BufferedImage): IO[BufferedImage] = applyFilter(i, filter)
+    override def apply(i: BufferedImage): IO[BufferedImage] =
+      IO(filter.filter(i, new BufferedImage(i.getWidth, i.getHeight(), i.getType)))
   }
 
   final case class Caustic(scale: Caustic.Scale,
